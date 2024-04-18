@@ -30,7 +30,7 @@ Future<DateRange?> showDateRangePickerDialog({
             left: offset?.dx ?? 0,
             child: DateRangePickerDialog(
               builder: builder,
-              footerBuilder: footerBuilder ?? teste,
+              footerBuilder: footerBuilder ?? DateRangePickerDialogFooter.new,
             ),
           ),
         ],
@@ -39,9 +39,7 @@ Future<DateRange?> showDateRangePickerDialog({
   );
 }
 
-Widget teste({DateRange? selectedDateRange}) {
-  return const SizedBox();
-}
+
 
 /// A function to show the dateRange picker dialog on a widget.
 /// * [widgetContext] - The context of the widget that will be used to show the dialog.
