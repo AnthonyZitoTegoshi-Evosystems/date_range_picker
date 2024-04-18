@@ -26,20 +26,17 @@ class DateRangeFormField extends FormField<DateRange> {
     Future<DateRange?> Function({
       required BuildContext widgetContext,
       required DateRangerPickerWidgetBuilder pickerBuilder,
-    })
-        showDateRangePicker = showDateRangePickerDialogOnWidget,
+    }) showDateRangePicker = showDateRangePickerDialogOnWidget,
     Widget Function({DateRange? selectedDateRange})? dialogFooterBuilder,
     Widget Function(BuildContext, DateRange?)? builder,
   }) : super(
           key: key,
-          initialValue:
-              initialValue ?? DateRange(DateTime.now(), DateTime.now()),
+          initialValue: initialValue,
           onSaved: onSaved,
           validator: validator,
           builder: (FormFieldState<DateRange> state) {
             final selectedDateRange = state.value;
-            final inputDecoration =
-                (decoration ?? const InputDecoration()).applyDefaults(
+            final inputDecoration = (decoration ?? const InputDecoration()).applyDefaults(
               Theme.of(state.context).inputDecorationTheme,
             );
 
