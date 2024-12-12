@@ -60,14 +60,16 @@ class DateRangeField extends StatelessWidget {
   VoidCallback? generateOnTap(BuildContext context) {
     if (enabled) {
       return () async {
-        final DateRange? dateRange = await showDateRangePicker?.call(
-          widgetContext: context,
-          pickerBuilder: pickerBuilder,
-        ) ?? showDateRangePickerDialogOnWidget(
-          widgetContext: context,
-          pickerBuilder: pickerBuilder,
-          dialogFooterBuilder: dialogFooterBuilder,
-        );
+        final DateRange? dateRange = showDateRangePicker != null
+            ? await showDateRangePicker(
+                widgetContext: context,
+                pickerBuilder: pickerBuilder,
+              )
+            : await showDateRangePickerDialogOnWidget(
+                widgetContext: context,
+                pickerBuilder: pickerBuilder,
+                dialogFooterBuilder: dialogFooterBuilder,
+              );
 
         onDateRangeSelected?.call(dateRange);
       };
