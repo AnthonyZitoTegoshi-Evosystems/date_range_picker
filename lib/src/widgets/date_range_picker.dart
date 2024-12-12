@@ -77,7 +77,7 @@ class DayNamesRow extends StatelessWidget {
     Key? key,
     required this.textStyle,
     List<String>? weekDays,
-  })  : weekDays = weekDays ?? defaultWeekDays(),
+  })  : weekDays = weekDays ?? defaultWeekDays(context),
         super(key: key);
 
   final TextStyle textStyle;
