@@ -23,7 +23,7 @@ class DateRangeField extends StatelessWidget {
     this.dialogFooterBuilder,
     this.enabled = true,
     required this.pickerBuilder,
-    this.showDateRangePicker = showDateRangePickerDialogOnWidget,
+    this.showDateRangePicker,
   }) : super(key: key);
 
   final Widget Function({DateRange? selectedDateRange})? dialogFooterBuilder;
@@ -36,7 +36,7 @@ class DateRangeField extends StatelessWidget {
   final Future<DateRange?> Function({
     required BuildContext widgetContext,
     required DateRangerPickerWidgetBuilder pickerBuilder,
-  }) showDateRangePicker;
+  })? showDateRangePicker;
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +60,13 @@ class DateRangeField extends StatelessWidget {
   VoidCallback? generateOnTap(BuildContext context) {
     if (enabled) {
       return () async {
-        final DateRange? dateRange = await showDateRangePicker(
+        final DateRange? dateRange = await showDateRangePicker?.call(
           widgetContext: context,
           pickerBuilder: pickerBuilder,
+        ) ?? showDateRangePickerDialogOnWidget(
+          widgetContext: context,
+          pickerBuilder: pickerBuilder,
+          dialogFooterBuilder: dialogFooterBuilder,
         );
 
         onDateRangeSelected?.call(dateRange);
