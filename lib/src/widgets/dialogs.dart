@@ -14,7 +14,7 @@ Future<DateRange?> showDateRangePickerDialog({
   required BuildContext context,
   required DateRangerPickerWidgetBuilder builder,
   Color barrierColor = Colors.transparent,
-  Widget Function({DateRange? selectedDateRange})? footerBuilder,
+  Widget Function(BuildContext context, {DateRange? selectedDateRange})? footerBuilder,
   Offset? offset,
 }) {
   return showGeneralDialog(
@@ -30,7 +30,7 @@ Future<DateRange?> showDateRangePickerDialog({
             left: offset?.dx ?? 0,
             child: DateRangePickerDialog(
               builder: builder,
-              footerBuilder: footerBuilder ?? DateRangePickerDialogFooter.new,
+              footerBuilder: footerBuilder ?? (BuildContext context, {DateRange? selectedDateRange}) => DateRangePickerDialogFooter(selectedDateRange: selectedDateRange),
             ),
           ),
         ],
@@ -54,7 +54,7 @@ Future<DateRange?> showDateRangePickerDialogOnWidget({
   required DateRangerPickerWidgetBuilder pickerBuilder,
   BuildContext? context,
   Color barrierColor = Colors.transparent,
-  Widget Function({DateRange? selectedDateRange})? dialogFooterBuilder,
+  Widget Function(BuildContext context, {DateRange? selectedDateRange})? dialogFooterBuilder,
   Offset delta = const Offset(0, 60),
 }) async {
   // Compute widget position on screen
@@ -87,7 +87,7 @@ class DateRangePickerDialog extends StatefulWidget {
   /// A function that builds a widget that will be used to display the footer.
   /// The selected dateRange will be passed to the footer builder. It can be null if
   /// no dateRange is selected yet.
-  final Widget Function({DateRange? selectedDateRange}) footerBuilder;
+  final Widget Function(BuildContext context, {DateRange? selectedDateRange}) footerBuilder;
 
   @override
   State<DateRangePickerDialog> createState() => _DateRangePickerDialogState();
@@ -136,7 +136,7 @@ class _DateRangePickerDialogState extends State<DateRangePickerDialog> {
                     });
                   }),
                 ),
-                widget.footerBuilder(selectedDateRange: dateRange),
+                widget.footerBuilder(context, selectedDateRange: dateRange),
               ],
             ),
           ],
