@@ -61,7 +61,7 @@ class DateRangeField extends StatelessWidget {
     if (enabled) {
       return () async {
         final DateRange? dateRange = showDateRangePicker != null
-            ? await showDateRangePicker(
+            ? await showDateRangePicker!(
                 widgetContext: context,
                 pickerBuilder: pickerBuilder,
               )
