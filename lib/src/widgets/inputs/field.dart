@@ -26,7 +26,7 @@ class DateRangeField extends StatelessWidget {
     this.showDateRangePicker,
   }) : super(key: key);
 
-  final Widget Function({DateRange? selectedDateRange})? dialogFooterBuilder;
+  final Widget Function(BuildContext context, {DateRange? selectedDateRange})? dialogFooterBuilder;
   final DateRangerPickerWidgetBuilder pickerBuilder;
   final InputDecoration? decoration;
   final bool enabled;
