@@ -44,7 +44,7 @@ class MonthSelectorAndDoubleIndicator extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            DateFormat.yMMM(Locale(AppLocalizations.of(context).localeName)).format(currentMonth),
+            DateFormat.yMMM(Locale(AppLocalizations.of(context)!.localeName)).format(currentMonth),
             textAlign: TextAlign.center,
             style: style,
           ),
@@ -53,7 +53,7 @@ class MonthSelectorAndDoubleIndicator extends StatelessWidget {
           const SizedBox(width: 16),
           Expanded(
             child: Text(
-              DateFormat.yMMM(Locale(AppLocalizations.of(context).localeName)).format(nextMonth!),
+              DateFormat.yMMM(Locale(AppLocalizations.of(context)!.localeName)).format(nextMonth!),
               textAlign: TextAlign.center,
               style: style,
             ),
