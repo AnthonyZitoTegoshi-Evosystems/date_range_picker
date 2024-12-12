@@ -76,18 +76,17 @@ class DayNamesRow extends StatelessWidget {
   DayNamesRow({
     Key? key,
     required this.textStyle,
-    List<String>? weekDays,
-  })  : weekDays = weekDays ?? defaultWeekDays(context),
-        super(key: key);
+    this.weekDays,
+  }) : super(key: key);
 
   final TextStyle textStyle;
-  final List<String> weekDays;
+  final List<String>? weekDays;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        for (var day in weekDays)
+        for (var day in weekDays ?? defaultWeekDays(context))
           Expanded(
             child: Center(
               child: Text(
