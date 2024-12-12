@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
 
 /// A widget that displays the current and next month in a row along with navigation arrows.
@@ -43,7 +44,7 @@ class MonthSelectorAndDoubleIndicator extends StatelessWidget {
         ),
         Expanded(
           child: Text(
-            DateFormat.yMMM().format(currentMonth),
+            DateFormat.yMMM(Locale(AppLocalizations.of(context).localeName)).format(currentMonth),
             textAlign: TextAlign.center,
             style: style,
           ),
@@ -52,7 +53,7 @@ class MonthSelectorAndDoubleIndicator extends StatelessWidget {
           const SizedBox(width: 16),
           Expanded(
             child: Text(
-              DateFormat.yMMM().format(nextMonth!),
+              DateFormat.yMMM(Locale(AppLocalizations.of(context).localeName)).format(nextMonth!),
               textAlign: TextAlign.center,
               style: style,
             ),
